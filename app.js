@@ -6,20 +6,13 @@ var logger = require('morgan');
 
 // add enviornment
 require('dotenv').config();
-
+var session = require('express-session');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var loginRouter = require('./routes/admin/login');
+
 // admin router
-
 var adminRouter = require('./routes/admin/novedades')
-
-
-
-var session = require('express-session');
-
-
-
 var app = express();
 
 // view engine setup
