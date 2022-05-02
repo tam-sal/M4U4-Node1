@@ -19,10 +19,12 @@ header {
   padding: 1em 0;
   position: sticky;
   
+  
   z-index: 3;
 }
 .c-header {
   top: 0px;
+  overflow: auto;
   
 }
 header h1 {
@@ -39,6 +41,7 @@ header h1 {
   max-width: 960px;
   margin: 0 auto;
   text-align: center;
+  
 }
 
 .homeimg img {

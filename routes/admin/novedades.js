@@ -49,4 +49,53 @@ router.post('/agregar', async (req, res, next) => {
   }
 )
 
+
+// Eliminar
+
+router.get('/eliminar/:id', async (req, res, next) => {
+  var id = req.params.id
+  await novedadesModel.deleteNovedadesById(id)
+  res.redirect('/admin/novedades')
+}
+)
+
+//// Modificar
+
+// Get la novedad a modificar
+
+router.get('/modificar/:id', async (req, res, next) => {
+  var id = req.params.id
+  console.log(req.params.id)
+  var novedad = await novedadesModel.getNovedadById(id)
+  res.render('admin/modificar', {
+    layout: 'admin/layout',
+    novedad
+  })
+})
+
+// Modificar la novedad
+
+router.post('/modificar', async (req, res, next)=>{
+  try {
+    var obj = {
+      titulo: req.body.titulo,
+      subtitulo: req.body.subtitulo,
+      cuerpo: req.body.cuerpo
+    }
+    console.log(obj)
+
+    await novedadesModel.modificarNovedadById(obj, req.body.id)
+    res.redirect('/admin/novedades')
+
+  } catch (error) {
+    console.log(error)
+    res.render('admin/modificar', {
+      layout: 'admin/layout',
+      error: true,
+      message: 'No se modifico la novedad'
+    })
+  }
+})
+
+
 module.exports = router;
