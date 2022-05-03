@@ -4,7 +4,11 @@
 
     <div class="col-6 offset-3">
       <h4>Agregar una nueva seccion de novedad</h4>
-      <form action="/admin/novedades/agregar" method="post">
+      <form
+        action="/admin/novedades/agregar"
+        method="post"
+        enctype="multipart/form-data"
+      >
         <div class="mb-3">
 
           <input
@@ -24,8 +28,16 @@
           ></textarea>
         </div>
 
-        <div class="mb-3">
+        <div
+          class="mb-3"
+          style="border: 0.5px solid rgba(190, 188, 188, 0.756); border-radius: 5px; height: 45px; margin-top: 5px; padding: 10px;"
+        >
+          <label>Imagen
+            <input type="file" name="imagen" id="imagen" />
+          </label>
+        </div>
 
+        <div class="mb-3">
           <textarea
             type="text"
             class="form-control"
@@ -33,6 +45,7 @@
             name="cuerpo"
           ></textarea>
         </div>
+
         <button type="submit" class="btn btn-primary">Guardar</button>
       </form>
       {{#if error}}
